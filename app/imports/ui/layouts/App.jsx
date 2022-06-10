@@ -4,13 +4,13 @@ import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Footer from '../components/Footer';
-import Landing from '../pages/Landing';
+// import Landing from '../pages/Landing';
 import ListStuff from '../pages/ListStuff';
 import ListStuffAdmin from '../pages/ListStuffAdmin';
 import AddStuff from '../pages/AddStuff';
 import EditStuff from '../pages/EditStuff';
 import NotFound from '../pages/NotFound';
-import SignUp from '../pages/SignUp';
+// import SignUp from '../pages/SignUp';
 import SignOut from '../pages/SignOut';
 import NavBar from '../components/NavBar';
 import SignIn from '../pages/SignIn';
@@ -22,11 +22,12 @@ const App = () => (
     <div className="d-flex flex-column min-vh-100">
       <NavBar/>
       <Routes>
-        <Route exact path="/" element={<Landing/>}/>
-        <Route path="/signin" element={<SignIn/>}/>
-        <Route path="/signup" element={<SignUp/>}/>
+        {/* <Route exact path="/" element={<Landing/>}/>
+        <Route path="/signin" element={<SignIn/>}/> */}
+        {/* <Route path="/signup" element={<SignUp/>}/> */}
+        <Route path="/" element={<SignIn/>}/>
         <Route path="/signout" element={<SignOut/>}/>
-        <Route path="/home" element={<ProtectedRoute><Landing/></ProtectedRoute>}/>
+        {/* <Route path="/home" element={<ProtectedRoute><Landing/></ProtectedRoute>}/> */}
         <Route path="/list" element={<ProtectedRoute><ListStuff/></ProtectedRoute>}/>
         <Route path="/add" element={<ProtectedRoute><AddStuff/></ProtectedRoute>}/>
         <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff/></ProtectedRoute>}/>
