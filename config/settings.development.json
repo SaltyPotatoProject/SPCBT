@@ -9,5 +9,11 @@
     { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
     { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
+  ],
+  "defaultBudget": [
+    { "name": "Basket", "budget": 500, "owner": "john@foo.com", "amount" : 100 },
+    { "name": "Bulb", "budget": 400, "owner": "john@foo.com", "amount" : 100 },
+    { "name": "Alcohol", "budget": 1500, "owner": "admin@foo.com", "amount" : 105 },
+    { "name": "Staples", "budget": 1400, "owner": "admin@foo.com", "amount" : 200 }
   ]
 }
