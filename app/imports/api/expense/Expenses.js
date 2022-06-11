@@ -6,6 +6,7 @@ import { Tracker } from 'meteor/tracker';
 /**
  * The ExpensesCollection. It encapsulates state and variable values for stuff.
  */
+// test
 class ExpensesCollection {
   constructor() {
     // The name of this collection.
