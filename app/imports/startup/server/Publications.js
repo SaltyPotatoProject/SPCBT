@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
 import { Budget } from '../../api/budget/Budget';
+import { Employees } from '../../api/employee/Employee';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.
@@ -35,6 +36,24 @@ Meteor.publish(Budget.userPublicationName, function () {
 Meteor.publish(Budget.adminPublicationName, function () {
   if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
     return Budget.collection.find();
+  }
+  return this.ready();
+});
+
+
+Meteor.publish(Employees.userPublicationName, function () {
+  if (this.userId) {
+    const username = Meteor.users.findOne(this.userId).username;
+    return Employees.collection.find({ owner: username });
+  }
+  return this.ready();
+});
+
+// Admin-level publication.
+// If logged in and with admin role, then publish all documents from all users. Otherwise publish nothing.
+Meteor.publish(Employees.adminPublicationName, function () {
+  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
+    return Employees.collection.find();
   }
   return this.ready();
 });

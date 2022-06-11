@@ -19,6 +19,7 @@ const ViewExpenses = ({ListExpenses}) => {
     const rdy = subscription.ready();
     // Get the Budget documents
     const transaction = Budget.collection.find({}).fetch();
+    // console.log(transaction)
     return {
       budget: transaction,
       ready: rdy,

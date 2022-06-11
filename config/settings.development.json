@@ -11,9 +11,13 @@
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
   ],
   "defaultBudget": [
-    { "name": "Basket", "budget": 500, "owner": "john@foo.com", "amount" : 100 },
-    { "name": "Bulb", "budget": 400, "owner": "john@foo.com", "amount" : 100 },
-    { "name": "Alcohol", "budget": 1500, "owner": "admin@foo.com", "amount" : 105 },
-    { "name": "Staples", "budget": 1400, "owner": "admin@foo.com", "amount" : 200 }
+    { "name": "Basket", "owner": "john@foo.com", "amount" : 100 },
+    { "name": "Bulb", "owner": "john@foo.com", "amount" : 100 },
+    { "name": "Alcohol", "owner": "admin@foo.com", "amount" : 105 },
+    { "name": "Staples", "owner": "admin@foo.com", "amount" : 200 }
+  ],
+  "defaultEmployees": [
+    {"owner": "john@foo.com", "budget" : 1000 },
+    {"owner": "admin@foo.com", "budget" : 1000 }
   ]
 }

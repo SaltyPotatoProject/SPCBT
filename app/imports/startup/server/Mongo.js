@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Budget } from '../../api/budget/Budget.js';
+import { Employees } from '../../api/employee/Employee.js';
 import { Stuffs } from '../../api/stuff/Stuff.js';
 
 /* eslint-disable no-console */
@@ -28,5 +29,18 @@ if (Budget.collection.find().count() === 0) {
   if (Meteor.settings.defaultBudget) {
     console.log('Creating default data.');
     Meteor.settings.defaultBudget.map(data => addBudget(data));
+  }
+}
+
+function addEmployees(data) {
+  console.log(`  Adding: ${data.owner} (${data.budget})`);
+  Employees.collection.insert(data);
+}
+
+// Initialize the BudgetCollection if empty.
+if (Employees.collection.find().count() === 0) {
+  if (Meteor.settings.defaultEmployees) {
+    console.log('Creating default employees.');
+    Meteor.settings.defaultEmployees.map(data => addEmployees(data));
   }
 }

@@ -4,19 +4,18 @@ import { Tracker } from 'meteor/tracker';
 
 
 /**
- * The StuffsCollection. It encapsulates state and variable values for stuff.
+ * The EmployeessCollection. It encapsulates state and variable values for stuff.
  */
-class BudgetCollection {
+class EmployeesCollection {
   constructor() {
     // The name of this collection.
-    this.name =  "BudgetCollection";
+    this.name =  "EmployeesCollection";
     // Define the Mongo collection.
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
-      name: String,
       owner: String,
-      amount: Number,
+      budget: Number,
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);
@@ -27,7 +26,7 @@ class BudgetCollection {
 }
 
 /**
- * The singleton instance of the BudgetCollection.
- * @type  BudgetCollection}
+ * The singleton instance of the EmployeesCollection.
+ * @type  EmployeesCollection}
  */
-export const Budget = new BudgetCollection();
+export const Employees = new EmployeesCollection();
