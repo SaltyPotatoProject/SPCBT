@@ -15,7 +15,7 @@ const NavBar = () => {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand as={NavLink} activeclassname="active" exact to="/"><h2 style={{marginLeft:"40%"}}>SpicyPotatoes Corporate Budget Tracker(SPCBT)</h2>
+        <Navbar.Brand as={NavLink} activeclassname="active" exact to="/"><h2 style={{ marginLeft: '40%' }}>SpicyPotatoes Corporate Budget Tracker(SPCBT)</h2>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">

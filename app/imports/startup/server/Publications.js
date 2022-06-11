@@ -40,7 +40,6 @@ Meteor.publish(Expenses.adminPublicationName, function () {
   return this.ready();
 });
 
-
 Meteor.publish(Employees.userPublicationName, function () {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;

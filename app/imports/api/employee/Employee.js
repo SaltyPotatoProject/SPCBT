@@ -2,14 +2,13 @@ import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
 import { Tracker } from 'meteor/tracker';
 
-
 /**
  * The EmployeessCollection. It encapsulates state and variable values for stuff.
  */
 class EmployeesCollection {
   constructor() {
     // The name of this collection.
-    this.name =  "EmployeesCollection";
+    this.name = 'EmployeesCollection';
     // Define the Mongo collection.
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.

@@ -2,13 +2,14 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Col, Container, Row, Table } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Expenses} from '../../api/expense/Expenses';
+import PropTypes from 'prop-types';
+import { Expenses } from '../../api/expense/Expenses';
 // import ListExpenses from '../components/ListExpenses';
 import LoadingSpinner from '../components/LoadingSpinner';
-
+// import ListExpenses from '../components/ListExpenses';
 
 /* Renders a table containing all of the Budget documents. Use <BudgetItem> to render each row. */
-const ViewExpenses = ({ListExpenses}) => {
+const ViewExpenses = ({ ListExpenses }) => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { ready, expense } = useTracker(() => {
     // Note that this subscription will get cleaned up
@@ -18,9 +19,9 @@ const ViewExpenses = ({ListExpenses}) => {
     // Determine if the subscription is ready
     const rdy = subscription.ready();
     // Get the Expenses documents
-    const expense = Expenses.collection.find({}).fetch();
+    const exp = Expenses.collection.find({}).fetch();
     return {
-      expense,
+      expense: exp,
       ready: rdy,
     };
   }, []);
@@ -29,7 +30,7 @@ const ViewExpenses = ({ListExpenses}) => {
       <Row className="justify-content-center">
         <Col md={7}>
           <Col className="text-center">
-            <h2 style={{margin: "0.8em"}}>Total Expenses</h2>
+            <h2 style={{ margin: '0.8em' }}>Total Expenses</h2>
           </Col>
           <Table striped bordered hover>
             <thead>
@@ -45,6 +46,9 @@ const ViewExpenses = ({ListExpenses}) => {
           </Table></Col>
       </Row>
     </Container>) : <LoadingSpinner/>);
+};
+ViewExpenses.propTypes = {
+  ListExpenses: PropTypes.func.isRequired,
 };
 
 export default ViewExpenses;
