@@ -2,7 +2,7 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Col, Container, Row, Table } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Budget} from '../../api/budget/Budget';
+import { Expenses} from '../../api/expense/Expenses';
 // import ListExpenses from '../components/ListExpenses';
 import LoadingSpinner from '../components/LoadingSpinner';
 
@@ -10,18 +10,17 @@ import LoadingSpinner from '../components/LoadingSpinner';
 /* Renders a table containing all of the Budget documents. Use <BudgetItem> to render each row. */
 const ViewExpenses = ({ListExpenses}) => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
-  const { ready, budget } = useTracker(() => {
+  const { ready, expense } = useTracker(() => {
     // Note that this subscription will get cleaned up
     // when your component is unmounted or deps change.
-    // Get access to Budget documents.
-    const subscription = Meteor.subscribe(Budget.userPublicationName);
+    // Get access to Expenses documents.
+    const subscription = Meteor.subscribe(Expenses.userPublicationName);
     // Determine if the subscription is ready
     const rdy = subscription.ready();
-    // Get the Budget documents
-    const transaction = Budget.collection.find({}).fetch();
-    // console.log(transaction)
+    // Get the Expenses documents
+    const expense = Expenses.collection.find({}).fetch();
     return {
-      budget: transaction,
+      expense,
       ready: rdy,
     };
   }, []);
@@ -41,7 +40,7 @@ const ViewExpenses = ({ListExpenses}) => {
               </tr>
             </thead>
             <tbody>
-              {budget.map((bud) => <ListExpenses key={bud._id} budget={bud}/>)}
+              {expense.map((bud) => <ListExpenses key={bud._id} expense={bud}/>)}
             </tbody>
           </Table></Col>
       </Row>

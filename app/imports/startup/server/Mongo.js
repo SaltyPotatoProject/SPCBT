@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import { Budget } from '../../api/budget/Budget.js';
+import { Expenses } from '../../api/expense/Expenses.js';
 import { Employees } from '../../api/employee/Employee.js';
 import { Stuffs } from '../../api/stuff/Stuff.js';
 
@@ -19,25 +19,25 @@ if (Stuffs.collection.find().count() === 0) {
   }
 }
 
-function addBudget(data) {
+function addExpenses(data) {
   console.log(`  Adding: ${data.name} (${data.owner})`);
-  Budget.collection.insert(data);
+  Expenses.collection.insert(data);
 }
 
-// Initialize the BudgetCollection if empty.
-if (Budget.collection.find().count() === 0) {
-  if (Meteor.settings.defaultBudget) {
+// Initialize the ExpensesCollection if empty.
+if (Expenses.collection.find().count() === 0) {
+  if (Meteor.settings.defaultExpenses) {
     console.log('Creating default data.');
-    Meteor.settings.defaultBudget.map(data => addBudget(data));
+    Meteor.settings.defaultExpenses.map(data => addExpenses(data));
   }
 }
 
 function addEmployees(data) {
-  console.log(`  Adding: ${data.owner} (${data.budget})`);
+  console.log(`  Adding: ${data.owner} (${data.Expenses})`);
   Employees.collection.insert(data);
 }
 
-// Initialize the BudgetCollection if empty.
+// Initialize the EmployeesCollection if empty.
 if (Employees.collection.find().count() === 0) {
   if (Meteor.settings.defaultEmployees) {
     console.log('Creating default employees.');

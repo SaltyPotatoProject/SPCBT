@@ -6,7 +6,7 @@ import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
-import { Budget } from '../../api/budget/Budget';
+import {Expenses } from '../../api/expense/Expenses';
 import ViewExpenses from './ViewExpenses';
 import ListExpenses from '../components/ListExpenses';
 import { Employees } from '../../api/employee/Employee';
@@ -45,7 +45,7 @@ const Homepage = () => {
     const { name, amount} = data;
     const owner = Meteor.user().username;
     employee[0].budget < amount ? swal('Error', "Not Enough Budget", 'error') :
-    Budget.collection.insert(
+    Expenses.collection.insert(
       { name, owner, amount},
       (error) => {
         if (error) {

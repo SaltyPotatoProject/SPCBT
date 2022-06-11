@@ -4,12 +4,12 @@ import { Tracker } from 'meteor/tracker';
 
 
 /**
- * The StuffsCollection. It encapsulates state and variable values for stuff.
+ * The ExpensesCollection. It encapsulates state and variable values for stuff.
  */
-class BudgetCollection {
+class ExpensesCollection {
   constructor() {
     // The name of this collection.
-    this.name =  "BudgetCollection";
+    this.name =  "ExpensesCollection";
     // Define the Mongo collection.
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
@@ -27,7 +27,7 @@ class BudgetCollection {
 }
 
 /**
- * The singleton instance of the BudgetCollection.
- * @type  BudgetCollection}
+ * The singleton instance of the ExpensesCollection.
+ * @type  ExpensesCollection}
  */
-export const Budget = new BudgetCollection();
+export const Expenses = new ExpensesCollection();

@@ -1,22 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 /** Renders a single row in the List Expenses table. See pages/ListExpenses.jsx. */
-const ListExpenses = ({ budget }) => (
+const ListExpenses = ({ expense }) => (
   <tr>
-    <td>{budget.owner}</td>
-    <td>{budget.name}</td>
-    <td>{budget.amount}</td>
-    {/* <td>
-      <Link to={`/edit/${budget._id}`}>Edit</Link>
-    </td> */}
+    <td>{expense.owner}</td>
+    <td>{expense.name}</td>
+    <td>{expense.amount}</td>
   </tr>
 );
 
 // Require a document to be passed to this component.
 ListExpenses.propTypes = {
-  budget: PropTypes.shape({
+  expense: PropTypes.shape({
     name: PropTypes.string,
     amount: PropTypes.number,
     owner: PropTypes.string,
