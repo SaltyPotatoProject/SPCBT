@@ -12,13 +12,17 @@ fixture('meteor-react-bootstrap-template localhost test with default db')
   .page('http://localhost:3000');
 
 test('Test that landing page shows up', async (testController) => {
-  await landingPage.isDisplayed(testController);
+  await signinPage.isDisplayed(testController);
 });
 
-test('Test that signin and signout work', async (testController) => {
-  await navBar.gotoSignInPage(testController);
+test('test that signin works', async(testController) => {
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.isLoggedIn(testController, credentials.username);
-  await navBar.logout(testController);
-  await signoutPage.isDisplayed(testController);
-});
+})
+// test('Test that signin and signout work', async (testController) => {
+//   await navBar.gotoSignInPage(testController);
+//   await signinPage.signin(testController, credentials.username, credentials.password);
+//   await navBar.isLoggedIn(testController, credentials.username);
+//   await navBar.logout(testController);
+//   await signoutPage.isDisplayed(testController);
+// });
