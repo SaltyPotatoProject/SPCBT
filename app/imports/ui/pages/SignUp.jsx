@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { Accounts } from 'meteor/accounts-base';
+import { Meteor } from 'meteor/meteor';
 import { Alert, Card, Col, Container, Row } from 'react-bootstrap';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import swal from 'sweetalert';
+import { Employees } from '../../api/employee/Employee';
 
 /**
  * SignUp component is similar to signin component, but we create a new user instead.
  */
-const SignUp = ({ location }) => {
+const SignUp = () => {
   const [error, setError] = useState('');
   const [redirectToReferer, setRedirectToRef] = useState(false);
 
@@ -28,16 +31,19 @@ const SignUp = ({ location }) => {
         setError(err.reason);
       } else {
         setError('');
+        swal('Success', 'registration Successful', 'success');
+        const owner = Meteor.user().username;
+        const budget = 0;
+        Employees.collection.insert({ owner, budget });
         setRedirectToRef(true);
       }
     });
   };
 
   /* Display the signup form. Redirect to add page after successful registration and login. */
-  const { from } = location?.state || { from: { pathname: '/add' } };
   // if correct authentication, redirect to from: page instead of signup screen
   if (redirectToReferer) {
-    return <Navigate to={from}/>;
+    return <Navigate to="/add"/>;
   }
   return (
     <Container id="signup-page">
@@ -56,9 +62,9 @@ const SignUp = ({ location }) => {
               </Card.Body>
             </Card>
           </AutoForm>
-          <Alert variant="secondary">
+          {/* <Alert variant="secondary">
             Already have an account? Login <Link to="/signin">here</Link>
-          </Alert>
+          </Alert> */}
           {error === '' ? (
             ''
           ) : (

@@ -28,13 +28,11 @@ const Homepage = () => {
   // Note that this subscription will get cleaned up
   // when your component is unmounted or deps change.
   // Get access to Budget documents.
-    const subscription = Meteor.subscribe(Employees.userPublicationName);
+    const subscription = Meteor.subscribe(Employees.adminPublicationName);
     // Determine if the subscription is ready
     const rdy = subscription.ready();
     // Get the Budget documents
-
-    const transaction = Employees.collection.find({ owner: Meteor.user().username }).fetch();
-    console.log(transaction);
+    const transaction = Employees.collection.find({}).fetch();
     return {
       employee: transaction,
       ready: rdy,
@@ -42,7 +40,6 @@ const Homepage = () => {
   }, []);
   //  console.log(employee[0].budget)
   // On submit, insert the data.
-  // console.log(employee)
   const submit = (data, formRef) => {
     const { name, amount } = data;
     const owner = Meteor.user().username;
@@ -65,6 +62,7 @@ const Homepage = () => {
   };
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   let fRef = null;
+  // console.log(Meteor.user().username);
   return (ready ? (
     <Container>
       { <h3 style={{ marginLeft: '12em' }}>Hello {employee[0].owner}, You have ${employee[0].budget} remaining to spend </h3>}

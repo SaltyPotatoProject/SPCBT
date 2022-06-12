@@ -3,10 +3,9 @@ import { Meteor } from 'meteor/meteor';
 import { Col, Container, Row, Table } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
+import { Roles } from 'meteor/alanning:roles';
 import { Expenses } from '../../api/expense/Expenses';
-// import ListExpenses from '../components/ListExpenses';
 import LoadingSpinner from '../components/LoadingSpinner';
-// import ListExpenses from '../components/ListExpenses';
 
 /* Renders a table containing all of the Budget documents. Use <BudgetItem> to render each row. */
 const ViewExpenses = ({ ListExpenses }) => {
@@ -15,7 +14,8 @@ const ViewExpenses = ({ ListExpenses }) => {
     // Note that this subscription will get cleaned up
     // when your component is unmounted or deps change.
     // Get access to Expenses documents.
-    const subscription = Meteor.subscribe(Expenses.userPublicationName);
+    const subscription = Roles.userIsInRole(Meteor.userId(), 'admin') ?
+      Meteor.subscribe(Expenses.adminPublicationName) : Meteor.subscribe(Expenses.userPublicationName);
     // Determine if the subscription is ready
     const rdy = subscription.ready();
     // Get the Expenses documents
