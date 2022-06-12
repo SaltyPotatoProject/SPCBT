@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import { Expenses } from '../../api/expense/Expenses.js';
+import { Expenses } from '../../api/expenses/Expenses.js';
 import { Employees } from '../../api/employee/Employee.js';
 import { Stuffs } from '../../api/stuff/Stuff.js';
 

@@ -4,7 +4,7 @@ import { Col, Container, Row, Table } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Roles } from 'meteor/alanning:roles';
-import { Expenses } from '../../api/expense/Expenses';
+import { Expenses } from '../../api/expenses/Expenses';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 /* Renders a table containing all of the Budget documents. Use <BudgetItem> to render each row. */

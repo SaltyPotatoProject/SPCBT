@@ -53,7 +53,6 @@ const AdminProtectedRoute = ({ children }) => {
   }
   const isAdmin = Roles.userIsInRole(Meteor.userId(), 'admin');
   // console.log(Meteor.user().username)
-  console.table(isAdmin, isLogged);
   return (isLogged && isAdmin) ? children : <Navigate to='/notauthorized'/>;
 };
 

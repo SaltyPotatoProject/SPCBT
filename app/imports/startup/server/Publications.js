@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
-import { Expenses } from '../../api/expense/Expenses';
+import { Expenses } from '../../api/expenses/Expenses';
 import { Employees } from '../../api/employee/Employee';
 
 // User-level publication.

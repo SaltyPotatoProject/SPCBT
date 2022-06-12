@@ -6,11 +6,10 @@ import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
-import { Expenses } from '../../api/expense/Expenses';
-import ViewExpenses from './ViewExpenses';
+import { Expenses } from '../../api/expenses/Expenses';
+import ViewExpenses from '../components/ViewExpenses';
 import ListExpenses from '../components/ListExpenses';
 import { Employees } from '../../api/employee/Employee';
-// import { useState } from 'react';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 // Create a schema to specify the structure of the data to appear in the form.
