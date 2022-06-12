@@ -34,15 +34,13 @@ const Homepage = () => {
     // Get the Budget documents
 
     const transaction = Employees.collection.find({ owner: Meteor.user().username }).fetch();
-    console.log(transaction);
     return {
       employee: transaction,
       ready: rdy,
     };
   }, []);
-  //  console.log(employee[0].budget)
+  
   // On submit, insert the data.
-  // console.log(employee)
   const submit = (data, formRef) => {
     const { name, amount } = data;
     const owner = Meteor.user().username;
