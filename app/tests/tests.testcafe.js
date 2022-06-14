@@ -6,7 +6,7 @@ import { navBar } from './navbar.component';
 /* global fixture:false, test:false */
 
 /** Credentials for one of the sample users defined in settings.development.json. */
-const credentials = { username: 'john@foo.com', password: 'changeme' };
+const credentials = { username: 'john@saltypotatocompany.com', password: 'changeme' };
 
 fixture('meteor-react-bootstrap-template localhost test with default db')
   .page('http://localhost:3000');

@@ -16,7 +16,7 @@ const NavBar = () => {
     <Navbar bg="light" expand="lg">
       <Container>
         {Roles.userIsInRole(Meteor.userId(), 'admin') ? (<Navbar.Brand as={NavLink} activeclassname="active" to="/"><h2 style={{ marginLeft: '2em' }}>SPCBT</h2>
-        </Navbar.Brand>) : <Navbar.Brand as={NavLink} activeclassname="active" to="/"><h2 style={{ marginLeft: '40%' }}>SpicyPotato Corporate Budget Tracker(SPCBT)</h2>
+        </Navbar.Brand>) : <Navbar.Brand as={NavLink} activeclassname="active" to="/"><h2 style={{ marginLeft: '2em' }}>SPCBT</h2>
         </Navbar.Brand>}
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">

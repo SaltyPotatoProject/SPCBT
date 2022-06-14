@@ -33,7 +33,7 @@ const Homepage = () => {
     const rdy = subscription.ready();
     // Get the Budget documents
 
-    const transaction = Employees.collection.find({ owner: Meteor.user().username }).fetch();
+    const transaction = Employees.collection.find({ }).fetch();
     return {
       employee: transaction,
       ready: rdy,
@@ -43,7 +43,8 @@ const Homepage = () => {
   // On submit, insert the data.
   const submit = (data, formRef) => {
     const { name, amount } = data;
-    const owner = Meteor.user().username;
+    // const owner = Meteor.user().username;
+    const owner = employee[0].owner;
     if (employee[0].budget < amount) {
       swal('Error', 'Not Enough Budget', 'error');
     } else {
@@ -63,27 +64,33 @@ const Homepage = () => {
   };
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   let fRef = null;
-  return (ready ? (
-    <Container>
-      { <h3 style={{ marginLeft: '12em' }}>Hello {employee[0].owner}, You have ${employee[0].budget} remaining to spend </h3>}
-      <ViewExpenses ListExpenses={ListExpenses} />
-      <Row className="justify-content-center">
-        <Col xs={5}>
-          <Col className="text-center"><h2 style={{ margin: '0.8em' }}>Add Expenses</h2></Col>
-          <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
-            <Card>
-              <Card.Body>
-                <TextField name='name'/>
-                <NumField name= 'amount' decimal={null}/>
-                <SubmitField value='Submit'/>
-                <ErrorsField/>
-              </Card.Body>
-            </Card>
-          </AutoForm>
-        </Col>
-      </Row>
-    </Container>) : <LoadingSpinner/>
-  );
+  if (ready) {
+    const email = employee[0].owner;
+    const nameEmp = email.substring(0, email.indexOf('@'));
+    return (
+      <Container>
+        <h3 style={{ marginLeft: '12em' }}>Hello {nameEmp}, You have ${employee[0].budget} remaining to spend </h3>
+        <ViewExpenses ListExpenses={ListExpenses} />
+        <Row className="justify-content-center">
+          <Col xs={5}>
+            <Col className="text-center"><h2 style={{ margin: '0.8em' }}>Add Expenses</h2></Col>
+            <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
+              <Card>
+                <Card.Body>
+                  <TextField name='name'/>
+                  <NumField name= 'amount' decimal={null}/>
+                  <SubmitField value='Submit'/>
+                  <ErrorsField/>
+                </Card.Body>
+              </Card>
+            </AutoForm>
+          </Col>
+        </Row>
+      </Container>);
+  }
+
+  return <LoadingSpinner/>;
+
 };
 
 export default Homepage;
