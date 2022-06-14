@@ -39,7 +39,7 @@ const Homepage = () => {
       ready: rdy,
     };
   }, []);
-  
+
   // On submit, insert the data.
   const submit = (data, formRef) => {
     const { name, amount } = data;

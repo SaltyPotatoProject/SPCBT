@@ -62,7 +62,7 @@ const AllocateBudget = () => {
       <Container>
         <Row className="justify-content-center">
           <Col xs={5}>
-            <Col className="text-center"><h2>Add Stuff</h2></Col>
+            <Col className="text-center"><h2>Allocate Budget for Employees</h2></Col>
             <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
               <Card>
                 <Card.Body>
