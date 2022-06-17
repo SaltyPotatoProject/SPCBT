@@ -38,27 +38,24 @@ const AllocateBudget = () => {
   // On submit, insert the data.
   const submit = (data, formRef) => {
     const { owner, amount } = data;
-    if (amount < 0 || amount > 10000) 
-    {
-      swal("Unauthorized!!", "Cannot have negative or greater than 10000 amount", 'error')
-    } 
-    else 
-    {
-    const _id = employee.find(emp => emp[0] === owner)[1];
-    const [{ budget }] = Employees.collection.find({ _id });
-    const amt = budget + amount;
-    Employees.collection.update(
-      { _id },
-      { $set: { budget: amt } },
-      (error) => {
-        if (error) {
-          swal('Error', error.message, 'error');
-        } else {
-          swal('Success', 'Budget allocated successfully', 'success');
-          formRef.reset();
-        }
-      },
-    );
+    if (amount < 0 || amount > 10000) {
+      swal('Unauthorized!!', 'Cannot have negative or greater than 10000 amount', 'error');
+    } else {
+      const _id = employee.find(emp => emp[0] === owner)[1];
+      const [{ budget }] = Employees.collection.find({ _id });
+      const amt = budget + amount;
+      Employees.collection.update(
+        { _id },
+        { $set: { budget: amt } },
+        (error) => {
+          if (error) {
+            swal('Error', error.message, 'error');
+          } else {
+            swal('Success', 'Budget allocated successfully', 'success');
+            formRef.reset();
+          }
+        },
+      );
     }
   };
 

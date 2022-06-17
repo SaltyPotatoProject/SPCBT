@@ -44,29 +44,26 @@ const Homepage = () => {
   const submit = (data, formRef) => {
     const { name, amount } = data;
     // const owner = Meteor.user().username;
-    if (amount < 0 || amount > 10000) 
-    {
-      swal("Unauthorized!!", "Cannot have negative or greater than 10000 expenses", 'error')
-    } 
-    else 
-    {
-    const owner = employee[0].owner;
-    if (employee[0].budget < amount) {
-      swal('Error', 'Not Enough Budget', 'error');
+    if (amount < 0 || amount > 10000) {
+      swal('Unauthorized!!', 'Cannot have negative or greater than 10000 expenses', 'error');
     } else {
-      Expenses.collection.insert(
-        { name, owner, amount },
-        (error) => {
-          if (error) {
-            swal('Error', error.message, 'error');
-          } else {
-            swal('Success', 'Item added successfully', 'success');
-            Employees.collection.update({ _id: employee[0]._id }, { $set: { budget: employee[0].budget - amount } });
-            formRef.reset();
-          }
-        },
-      );
-    }
+      const owner = employee[0].owner;
+      if (employee[0].budget < amount) {
+        swal('Error', 'Not Enough Budget', 'error');
+      } else {
+        Expenses.collection.insert(
+          { name, owner, amount },
+          (error) => {
+            if (error) {
+              swal('Error', error.message, 'error');
+            } else {
+              swal('Success', 'Item added successfully', 'success');
+              Employees.collection.update({ _id: employee[0]._id }, { $set: { budget: employee[0].budget - amount } });
+              formRef.reset();
+            }
+          },
+        );
+      }
     }
   };
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
