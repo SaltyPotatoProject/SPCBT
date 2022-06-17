@@ -44,6 +44,12 @@ const Homepage = () => {
   const submit = (data, formRef) => {
     const { name, amount } = data;
     // const owner = Meteor.user().username;
+    if (amount < 0 || amount > 10000) 
+    {
+      swal("Unauthorized!!", "Cannot have negative or greater than 10000 expenses", 'error')
+    } 
+    else 
+    {
     const owner = employee[0].owner;
     if (employee[0].budget < amount) {
       swal('Error', 'Not Enough Budget', 'error');
@@ -60,6 +66,7 @@ const Homepage = () => {
           }
         },
       );
+    }
     }
   };
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
