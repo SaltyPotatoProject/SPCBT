@@ -1,0 +1,23 @@
+{
+  "defaultAccounts": [
+    { "email": "admin@saltypotatocompany.com", "password": "changeme", "role": "admin" },
+    { "email": "john@saltypotatocompany.com", "password": "changeme" }
+  ],
+
+  "defaultData": [
+    { "name": "Basket", "quantity": 3, "owner": "john@saltypotatocompany.com", "condition": "excellent" },
+    { "name": "Bicycle", "quantity": 2, "owner": "john@saltypotatocompany.com", "condition": "poor" },
+    { "name": "Banana", "quantity": 2, "owner": "admin@saltypotatocompany.com", "condition": "good" },
+    { "name": "Boogie Board", "quantity": 2, "owner": "admin@saltypotatocompany.com", "condition": "excellent" }
+  ],
+  "defaultExpenses": [
+    { "name": "Basket", "owner": "john@saltypotatocompany.com", "amount" : 100 },
+    { "name": "Bulb", "owner": "john@saltypotatocompany.com", "amount" : 100 },
+    { "name": "Alcohol", "owner": "admin@saltypotatocompany.com", "amount" : 105 },
+    { "name": "Staples", "owner": "admin@saltypotatocompany.com", "amount" : 200 }
+  ],
+  "defaultEmployees": [
+    {"owner": "john@saltypotatocompany.com", "budget" : 1000 },
+    {"owner": "admin@saltypotatocompany.com", "budget" : 1000 }
+  ]
+}
