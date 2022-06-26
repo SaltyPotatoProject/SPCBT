@@ -8,7 +8,7 @@ const Footer = () => (
       <Col className="text-center">
         SPCBT TEAM <br />
         &copy; SPCBT 2022, No rights reserved
-        </Col>
+      </Col>
     </Container>
   </footer>
 );
