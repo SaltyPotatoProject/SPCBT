@@ -6,11 +6,9 @@ const Footer = () => (
   <footer className='footer mt-auto py-3 bg-light text-bg-light'>
     <Container>
       <Col className="text-center">
-        Department of Information and Computer Sciences <br />
-        University of Hawaii<br />
-        Honolulu, HI 96822 <br />
-        <a href="http://ics-software-engineering.github.io/meteor-application-template-react">Template Home
-          Page</a></Col>
+        SPCBT TEAM <br />
+        &copy; SPCBT 2022, No rights reserved
+        </Col>
     </Container>
   </footer>
 );

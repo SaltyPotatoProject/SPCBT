@@ -27,8 +27,8 @@ const NavBar = () => {
               <Nav.Link as={NavLink} activeclassname="active" exact to="/list" key='list'>List Stuff</Nav.Link>,
             ]) : ''} */}
             {Roles.userIsInRole(Meteor.userId(), 'admin') ? (<>
-              <Nav.Link as={NavLink} activeclassname="active" to="/signup" key='admin'><label style={{ marginLeft: '12em' }}>Register a User</label> </Nav.Link>
-              <Nav.Link as={NavLink} activeclassname="active" to="/allocatebudget" key='allocate'><label style={{ marginLeft: '12em' }}>Allocate Budget</label> </Nav.Link>
+              <Nav.Link as={NavLink} activeclassname="active" to="/signup" key='admin'><label style={{ marginLeft: '12em' }}><b>Register a User</b></label> </Nav.Link>
+              <Nav.Link as={NavLink} activeclassname="active" to="/allocatebudget" key='allocate'><label style={{ marginLeft: '12em' }}><b>Allocate Budget</b></label> </Nav.Link>
             </>
             ) : ''}
           </Nav>
